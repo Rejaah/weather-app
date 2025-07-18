@@ -2,12 +2,29 @@ import React from "react";
 import "./CurrentWeather.css";
 
 const CurrentWeather = ({ data }) => {
+  const getLocalTime = (timestamp, timezone) => {
+    const data = new Date((timestamp + timezone) * 1000);
+    const options = {
+      weekday: "long",
+      year: "numeric",
+      month: "long",
+      day: "numeric",
+      hour: "2-digit",
+      minute: "2-digit",
+      timeZone: "UTC",
+    };
+    return data.toLocaleDateString("en-US", options);
+  };
+
+  const localTime = getLocalTime(data.dt, data.timezone);
+  const [date, time] = localTime.split(" at ");
+
   return (
     <div className="weather-card">
       <div className="header">
         <div>
           <p className="city">{data.city}</p>
-          <p className="date">Thursday, 17 July 2025</p>
+          <p className="date">{`${date} | ${time}`}</p>
         </div>
       </div>
       <div className="main-section">
