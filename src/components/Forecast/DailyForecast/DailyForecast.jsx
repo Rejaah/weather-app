@@ -13,7 +13,7 @@ const DailyForecast = ({ data }) => {
         <div className="daily-forecast-card">
             <h2 className="daily-forecast-title">Daily Forecast</h2>
             {dailyForecasts.map((item, idx) => (
-                <details className="daily-forecast-container" key={idx}>
+                <details className="daily-item-container" key={idx}>
                     <summary className="daily-item-summary">
                         <div className="daily-item">
                             <img src={`/assets/icons/${item.weather[0].icon}.png`} alt="" />

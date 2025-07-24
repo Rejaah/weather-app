@@ -1,4 +1,4 @@
-.forecast-card {
+.daily-forecast-card {
   background: rgba(255, 255, 255, 0.2);
   backdrop-filter: blur(10px);
   border-radius: 20px;
@@ -8,7 +8,7 @@
   color: white;
 }
 
-.forecast-title {
+.daily-forecast-title {
   font-size: 20px;
   font-weight: 600;
   margin: 0 0 15px 0;
@@ -16,46 +16,71 @@
 
 .daily-item-container {
   background: rgba(255, 255, 255, 0.1);
-  border-radius: 10px;
+  border-radius: 12px;
   margin: 5px 0;
-  padding: 5px 15px;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.daily-item-container:hover {
+  background: rgba(255, 255, 255, 0.2);
 }
 
 .daily-item-summary {
   list-style: none;
   cursor: pointer;
-  display: flex;
+  display: block;
+  padding: 10px 15px;
 }
 
 .daily-item-summary::-webkit-details-marker {
-  display: none; 
+  display: none;
 }
 
 .daily-item {
   display: grid;
-  grid-template-columns: auto 1fr 2fr auto;
+  grid-template-columns: auto 1fr 1.5fr auto;
   align-items: center;
   gap: 15px;
   font-size: 14px;
   width: 100%;
 }
 
-.icon-small { width: 40px; }
-.day { font-weight: 600; }
-.description { text-transform: capitalize; }
-.min-max { text-align: right; }
-
-.daily-details-grid {
-  padding: 15px 5px 5px 5px;
-  display: grid;
-  grid-template-columns: auto 1fr;
-  gap: 10px 15px;
-  font-size: 14px;
-  border-top: 1px solid rgba(255, 255, 255, 0.2);
-  margin-top: 10px;
+.daily-item > * {
+  pointer-events: none;
 }
 
-.daily-details-grid .grid-item label:last-child {
+.icon-small { width: 40px; }
+.day { font-weight: 600; }
+.description { text-transform: capitalize; color: rgba(255, 255, 255, 0.8); }
+.temp-range { text-align: right; font-weight: 600; }
+
+.daily-details-grid {
+  overflow: hidden;
+  padding: 15px 20px 20px 20px;
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+  margin: 0 15px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px 20px;
+  font-size: 14px;
+}
+
+.daily-item-container[open] .daily-item-summary {
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 12px 12px 0 0;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.grid-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.grid-item label:first-child {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.grid-item label:last-child {
   font-weight: 600;
-  text-align: right;
 }
