@@ -24,17 +24,21 @@ body {
   transition: background 0.5s ease-in-out;
 }
 
-.bg-day-clear {
-  background: linear-gradient(135deg, #87CEEB, #5F9EA0);
-}
+.bg-day-clear { background: linear-gradient(135deg, #87CEEB, #5F9EA0); } 
+.bg-day-cloudy { background: linear-gradient(135deg, #B0C4DE, #778899); }
+.bg-day-rain { background: linear-gradient(135deg, #6c7a89, #465563); } 
+.bg-day-thunderstorm { background: linear-gradient(135deg, #483D8B, #2F4F4F); } 
+.bg-day-snow { background: linear-gradient(135deg, #E6E6FA, #B0E0E6); } 
+.bg-day-mist { background: linear-gradient(135deg, #D3D3D3, #A9A9A9); } 
 
-.bg-night-clear {
-  background: linear-gradient(135deg, #2c3e50, #465563);
-}
+.bg-night-clear { background: linear-gradient(135deg, #2c3e50, #0d1a26); } 
+.bg-night-cloudy { background: linear-gradient(135deg, #36454F, #2C3E50); } 
+.bg-night-rain { background: linear-gradient(135deg, #232931, #393E46); } 
+.bg-night-thunderstorm { background: linear-gradient(135deg, #2c3e50, #1a233a); } 
+.bg-night-snow { background: linear-gradient(135deg, #465563, #1E2A3A); } 
+.bg-night-mist { background: linear-gradient(135deg, #464646, #222222); } 
 
-.bg-rain {
-  background: linear-gradient(135deg, #6c7a89, #465563);
-}
+.bg-default { background: linear-gradient(135deg, #4b6cb7, #182848); }
 
 .title {
   text-align: center;
