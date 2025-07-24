@@ -6,7 +6,7 @@ const Forecast = ({ data }) => {
     <div className="forecast-card">
       <h2 className="forecast-title">Hourly Forecast</h2>
       <div className="hourly-items-container">
-        {data.list.slice(0, 7).map((hour, idx) => (
+        {data.list.slice(0, 8).map((hour, idx) => (
           <div className="hourly-item" key={idx}>
             <label className="hour">{hour.dt_txt.slice(11, 16)}</label>
             <img
