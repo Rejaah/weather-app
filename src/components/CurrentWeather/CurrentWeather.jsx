@@ -36,8 +36,7 @@ const CurrentWeather = ({ data }) => {
         <div className="temperature-details">
           <p className="temperature">{Math.round(data.main.temp)}°C</p>
           <p className="weather-description">{data.weather[0].description}</p>
-          <p className="temp-range">
-            High: {Math.round(data.main.temp_max)}°C | Low: {Math.round(data.main.temp_min)}°C
+          <p className="temp">High: {Math.round(data.main.temp_max)}°C | Low: {Math.round(data.main.temp_min)}°C
           </p>
         </div>
       </div>

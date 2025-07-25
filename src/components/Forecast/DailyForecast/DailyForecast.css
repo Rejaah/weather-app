@@ -9,7 +9,7 @@
 }
 
 .daily-forecast-title {
-  font-size: 20px;
+  font-size: 24px;
   font-weight: 600;
   margin: 0 0 15px 0;
 }
@@ -41,7 +41,7 @@
   grid-template-columns: auto 1fr 1.5fr auto;
   align-items: center;
   gap: 15px;
-  font-size: 14px;
+  font-size: 18px;
   width: 100%;
 }
 
@@ -49,7 +49,7 @@
   pointer-events: none;
 }
 
-.icon-small { width: 40px; }
+.icon-small { width: 64px; }
 .day { font-weight: 600; }
 .description { text-transform: capitalize; color: rgba(255, 255, 255, 0.8); }
 .temp-range { text-align: right; font-weight: 600; }
@@ -83,4 +83,41 @@
 
 .grid-item label:last-child {
   font-weight: 600;
+}
+
+@media (max-width: 768px) {  
+  .daily-forecast-title {
+    font-size: 20px;
+  }
+
+  .daily-item {
+    grid-template-columns: auto 1fr;
+    grid-template-areas:
+      "icon day"
+      "icon description"
+      "icon min-max";
+    gap: 2px 15px;
+    padding: 8px 10px;
+  }
+  .daily-item .icon-small {
+    grid-area: icon;
+    align-self: center;
+  }
+  .daily-item .day {
+    grid-area: day;
+  }
+  .daily-item .description {
+    grid-area: description;
+    text-align: left;
+    font-size: 14px;
+  }
+  .daily-item .temp-range {
+    grid-area: min-max;
+    text-align: left; 
+    font-size: 14px;
+  }
+  
+  .daily-details-grid {
+    grid-template-columns: 1fr;
+  }
 }

@@ -16,7 +16,7 @@ const DailyForecast = ({ data }) => {
                 <details className="daily-item-container" key={idx}>
                     <summary className="daily-item-summary">
                         <div className="daily-item">
-                            <img src={`/assets/icons/${item.weather[0].icon}.png`} alt="" />
+                            <img src={`/assets/icons/${item.weather[0].icon}.png`} alt="weather" className="icon-small" />
                             <label className="day">{forecastDays[idx]}</label>
                             <label className="description">{item.weather[0].description}</label>
                             <label className="temp-range">High: {Math.round(item.main.temp_max)}°C | Low: {Math.round(item.main.temp_min)}°C</label>
