@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { AsyncPaginate } from "react-select-async-paginate";
-import { geoApiOptions, GEO_API_URL } from "../../api";
+import { WEATHER_API_KEY, } from "../../api";
 
 const customStyles = {
   control: (provided) => ({
@@ -48,22 +48,27 @@ const Search = ({ onSearchChange }) => {
   const [search, setSearch] = useState(null);
 
   const loadOptions = (inputValue) => {
+
+    if (!inputValue) {
+      return Promise.resolve({ options: [] });
+    }
+
     return fetch(
-      `${GEO_API_URL}/cities?minPopulation=1000000&namePrefix=${inputValue}`,
-      geoApiOptions
+      `https://api.openweathermap.org/geo/1.0/direct?q=${inputValue}&limit=5&appid=${WEATHER_API_KEY}`
     )
       .then((response) => response.json())
       .then((response) => {
         return {
-          options: response.data.map((city) => {
-            return {
-              value: `${city.latitude} ${city.longitude}`,
-              label: `${city.name}, ${city.countryCode}`,
-            };
-          }),
+          options: response.map((city) => ({
+            value: `${city.lat} ${city.lon}`,
+            label: `${city.name}, ${city.country} ${city.state ? `(${city.state})` : ''}`,
+          })),
         };
       })
-      .catch((err) => console.error(err));
+      .catch((err) => {
+        console.error(err);
+        return { options: [] };
+      });
   };
 
   const handleOnChange = (searchData) => {
