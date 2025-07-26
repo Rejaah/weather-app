@@ -1,12 +1,60 @@
-# React + Vite
+# 🌦️ React Weather Forecast App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Aplikasi cuaca modern yang dibangun dengan React.js, menyediakan data cuaca real-time, ramalan per jam, dan harian dengan antarmuka yang bersih dan responsif.
 
-Currently, two official plugins are available:
+### ✨ **[Lihat Aplikasi](https://weather-app-alpha-seven-44.vercel.app)** ✨
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 📝 Deskripsi
 
-## Expanding the ESLint configuration
+Proyek ini adalah sebuah aplikasi web yang memungkinkan pengguna untuk mencari dan melihat informasi cuaca untuk berbagai kota di seluruh dunia. Aplikasi ini menampilkan data cuaca saat ini, ramalan untuk beberapa jam ke depan, dan ramalan harian. Latar belakang aplikasi akan berubah secara dinamis sesuai dengan kondisi cuaca dan waktu (siang/malam) untuk memberikan pengalaman pengguna yang lebih imersif.
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## 🚀 Fitur Utama
+
+-   **Pencarian Kota Dinamis:** Cari kota di seluruh dunia dengan saran *autocomplete* yang cerdas.
+-   **Data Cuaca Real-time:** Dapatkan informasi cuaca terkini, termasuk temperatur, kelembapan, kecepatan angin, dan tekanan udara.
+-   **Lokasi Terkini:** Dapatkan data cuaca untuk lokasi Anda saat ini dengan sekali klik.
+-   **Ramalan Cuaca Lengkap:**
+    -   **Per Jam:** Tampilan *slider* untuk ramalan cuaca setiap 3 jam.
+    -   **Harian:** Accordion interaktif untuk ramalan 5 hari ke depan beserta detailnya.
+-   **UI Modern & Responsif:** Tampilan yang bersih dengan efek *glassmorphism* dan desain yang beradaptasi di berbagai ukuran layar, dari desktop hingga mobile.
+-   **Latar Belakang Dinamis:** Latar belakang berubah warna sesuai kondisi cuaca (cerah, berawan, hujan) dan waktu (siang/malam).
+
+## 🛠️ Teknologi yang Digunakan
+
+-   **Frontend:** [React.js](https://reactjs.org/)
+-   **Build Tool:** [Vite](https://vitejs.dev/)
+-   **Styling:** CSS3
+-   **Icons:** [React Feather](https://feathericons.com/)
+-   **API:**
+    -   [OpenWeatherMap Geocoding API](https://openweathermap.org/api/geocoding-api)
+    -   [OpenWeatherMap Forecast API](https://openweathermap.org/forecast5)
+-   **Deployment:** [Vercel](https://vercel.com/)
+
+## ⚙️ Instalasi & Menjalankan Proyek
+
+Untuk menjalankan proyek ini secara lokal, ikuti langkah-langkah berikut:
+
+**1. Clone Repository**
+```bash
+git clone [https://github.com/](https://github.com/)Rejaah/weather-app.git
+cd weather-app
+```
+**2. Instal Dependensi**
+```bash
+npm install
+```
+
+**3. Setup Environment Variable**
+```bash
+# Ganti dengan kunci API OpenWeatherMap Anda
+VITE_WEATHER_API_KEY="kunci_api_anda_di_sini"
+```
+
+**4. Jalankan Development Server**
+```bash
+npm run dev
+```
+
+## 📄 Lisensi
+
+Proyek ini dilisensikan di bawah MIT License.
