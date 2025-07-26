@@ -37,11 +37,12 @@ function App() {
         return 'bg-default';
     }
   }
-  const handleSearchChange = (searchData) => {
-    const [lat, lon] = searchData.value.split(" ");
 
-    const currentWeather = fetch(`${WEATHER_API_URL}/weather?lat=${lat}&lon=${lon}&appid=${WEATHER_API_KEY}&units=metric`);
-    const forecast = fetch(`${WEATHER_API_URL}/forecast?lat=${lat}&lon=${lon}&appid=${WEATHER_API_KEY}&units=metric`);
+  const handleOnLocationSelect = (searchData) => {
+    const [lat, long] = searchData.value.split(" ");
+
+    const currentWeather = fetch(`${WEATHER_API_URL}/weather?lat=${lat}&lon=${long}&appid=${WEATHER_API_KEY}&units=metric`);
+    const forecast = fetch(`${WEATHER_API_URL}/forecast?lat=${lat}&lon=${long}&appid=${WEATHER_API_KEY}&units=metric`);
 
     Promise.all([currentWeather, forecast])
       .then(async ([currentWeather, forecast]) => {
@@ -57,6 +58,32 @@ function App() {
       .catch((err) => console.error(err));
   };
 
+  const handleCurrentLocationClick = () => {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition((position) => {
+        const { latitude, longitude } = position.coords;
+
+        fetch(`https://api.openweathermap.org/geo/1.0/reverse?lat=${latitude}&lon=${longitude}&limit=1&appid=${WEATHER_API_KEY}`)
+          .then(res => res.json())
+          .then(data => {
+            if (data && data.length > 0) {
+              const cityData = {
+                value: `${latitude} ${longitude}`,
+                label: `${data[0].name}, ${data[0].country}`
+              };
+              handleOnLocationSelect(cityData);
+            }
+          })
+          .catch(err => console.error(err));
+      }, (error) => {
+        alert("Could not retrieve your location. Please allow location access.");
+        console.error(error);
+      });
+    } else {
+      alert("Geolocation is not supported by this browser.");
+    }
+  };
+
   console.log("Current Weather Data:", currentWeather);
   console.log("Forecast Data:", forecast);
 
@@ -65,7 +92,10 @@ function App() {
       <div className={`app-background ${background}`}></div>
       <div className="main-container">
         <h1 className="title">Weather App</h1>
-        <Search onSearchChange={handleSearchChange} />
+        <Search 
+          onLocationSelect={handleOnLocationSelect}
+          onCurrentLocationClick={handleCurrentLocationClick}
+        />
         {currentWeather && <CurrentWeather data={currentWeather} />}
         {forecast && <HourlyForecast data={forecast} />}
         {forecast && <DailyForecast data={forecast} />}

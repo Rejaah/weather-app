@@ -1,0 +1,28 @@
+.search-container {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.search-bar {
+    flex-grow: 1;
+}
+
+.location-button {
+  width: 45px;
+  height: 45px;
+  flex-shrink: 0;
+  background: rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.location-button:hover {
+  background: rgba(255, 255, 255, 0.3);
+}

@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { AsyncPaginate } from "react-select-async-paginate";
 import { WEATHER_API_KEY, } from "../../api";
+import { Crosshair } from "react-feather";
+import "./Search.css";
 
 const customStyles = {
   control: (provided) => ({
@@ -44,7 +46,7 @@ const customStyles = {
   }),
 };
 
-const Search = ({ onSearchChange }) => {
+const Search = ({ onLocationSelect, onCurrentLocationClick }) => {
   const [search, setSearch] = useState(null);
 
   const loadOptions = (inputValue) => {
@@ -73,18 +75,25 @@ const Search = ({ onSearchChange }) => {
 
   const handleOnChange = (searchData) => {
     setSearch(searchData);
-    onSearchChange(searchData);
+    onLocationSelect(searchData);
   };
 
   return (
-    <AsyncPaginate
-      placeholder="Search for a city"
-      debounceTimeout={600}
-      value={search}
-      onChange={handleOnChange}
-      loadOptions={loadOptions}
-      styles={customStyles}
-    />
+    <div className="search-container">
+      <div className="search-bar">
+        <AsyncPaginate
+          placeholder="Search for a city"
+          debounceTimeout={600}
+          value={search}
+          onChange={handleOnChange}
+          loadOptions={loadOptions}
+          styles={customStyles}
+        />
+      </div>
+      <button className="location-button" onClick={onCurrentLocationClick}>
+        <Crosshair size={24}/>
+      </button>
+    </div>
   );
 };
 
